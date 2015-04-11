@@ -1,0 +1,41 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        "configurable"
+    ],
+    "companyName": "Pebble",
+    "longName": "Pebble.js Tweeter Sentiment Analyser",
+    "projectType": "pebblejs",
+    "resources": {
+        "media": [
+            {
+                "file": "images/menu_icon.png",
+                "menuIcon": true,
+                "name": "IMAGE_MENU_ICON",
+                "type": "png"
+            },
+            {
+                "file": "images/logo_splash.png",
+                "name": "IMAGE_LOGO_SPLASH",
+                "type": "png"
+            },
+            {
+                "file": "images/tile_splash.png",
+                "name": "IMAGE_TILE_SPLASH",
+                "type": "png"
+            },
+            {
+                "file": "fonts/UbuntuMono-Regular.ttf",
+                "name": "MONO_FONT_14",
+                "type": "font"
+            }
+        ]
+    },
+    "shortName": "peTweet",
+    "uuid": "487853b0-961a-4f22-8de3-6a4fc3ab349d",
+    "versionCode": 1,
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": false
+    }
+}
