@@ -3,7 +3,7 @@
     "capabilities": [
         "configurable"
     ],
-    "companyName": "Pebble",
+    "companyName": "by the Incredible table",
     "longName": "Pebble.js Tweeter Sentiment Analyser",
     "projectType": "pebblejs",
     "resources": {
@@ -31,7 +31,7 @@
             }
         ]
     },
-    "shortName": "peTweet",
+    "shortName": "peSenti",
     "uuid": "487853b0-961a-4f22-8de3-6a4fc3ab349d",
     "versionCode": 1,
     "versionLabel": "1.0",
