@@ -28,8 +28,11 @@ function locationSuccess(pos) {
     function(data){
       //sucess
       var places=[];
+      console.log(data);
+      console.log(JSON.parse(data).response);
       var res=JSON.parse(data).response;
       console.log("the first palace is "+res.venues[0].name);
+      splash.subtitle(JSON.parse(data).response.venues[0].name);
       console.log("length is "+res.venues.length);
       for (var i=0;i<res.venues.length;i++){
         console.log("place is "+res.venues[i].name); 
@@ -71,11 +74,11 @@ function sent2color(sentiment){
 function getSentimentData(places){
   ajax(
   {
-    url:'http://chetannaik.pythonanywhere.com/query/sdfsdf',//supposed to use the places as argument.
-    type:'json'
+    url:'http://chetannaik.pythonanywhere.com/query/sdfsdf'//supposed to use the places as argument.
   },
   function(data){
     console.log('successfully fetched tweets');
+    splash.subtitle("retrieved data");
     var wind = new UI.Window({fullscreen:true});
     var siz=new Vector2(36,36);
     var senti=JSON.parse(data).response;
@@ -101,6 +104,8 @@ function getSentimentData(places){
         wind.add(text);
       }
   }  
+  wind.show();
+  splash.hide();
   var selector=0;
   var selectorBox=new UI.Rect({
     position:new Vector2(0,0),
@@ -108,7 +113,19 @@ function getSentimentData(places){
     borderColor:"white",
     backgroundColor:"clear"
   });
-  
+  var previewText=new UI.Text({
+    position:new Vector2(0,144),
+    size:new Vector2(144,16),
+    textOverflow:"ellipsis",
+    text:senti[selector].tweet
+    
+  });
+  function changePreview(){
+    if (selector<senti.length){
+      previewText.text(senti[selector].tweet);
+    }
+  }
+  wind.add(previewText);
   wind.on('click','down',function(){
   //move down
     var pos=selectorBox.position();
@@ -123,7 +140,7 @@ function getSentimentData(places){
   
     selectorBox.animate('position',pos,400);
     selector=(pos.x*4+pos.y)/36;
-
+    changePreview();
   });
     
   wind.on('click','up',function(){
@@ -142,13 +159,13 @@ function getSentimentData(places){
       selectorBox.animate('position',pos,400);
       selector=temp;
     }
+    changePreview();
   });
     
   wind.on('click','select',startPreview);
     
   wind.add(selectorBox);
-  wind.show();
-  splash.hide();
+  
   /*var geotext=new UI.Text({
     text:"getting location data..",
     size:new Vector2(144,16),
@@ -202,6 +219,7 @@ function getSentimentData(places){
   },//end of main success function 
   function(error){
     console.log('Failed fetching tweets');
+    splash.subtitle("Failed to fetch tweets");
   }
 );
 
